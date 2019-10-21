@@ -5,7 +5,7 @@ import random
 
 #####################################################
 
-def play_game():
+def play_game(level=1):
     attempts = 0
     name = input("Enter your name: \n")
 
@@ -28,10 +28,10 @@ def play_game():
 
             break
 
-        elif user_guess < sec_num:
+        elif user_guess < sec_num and level == 1:
             print("Think higher")
 
-        elif user_guess > sec_num:
+        elif user_guess > sec_num and level == 1:
             print("Think lower")
 
         wrong_guesses.append(user_guess)
@@ -72,7 +72,8 @@ while True:
     select = input("Enter your selection:- \n A-- Play a new game \n B-- Get the score list \n C-- Get the top scores  \n").upper()
 
     if select == "A":
-        play_game()
+        sel = int(input("Enter the difficulty selection. For 'easy' press 1 and for 'difficult' press 2:\n "))
+        play_game(level=sel)
         break
     elif select == "B":
         get_score_list()
